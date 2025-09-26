@@ -20,11 +20,14 @@ A comprehensive Python toolkit for making HTTPS requests to servers with self-si
 ## Installation
 
 ```bash
-# Install dependencies
-pip install httpx
+# Using uv (recommended)
+uv sync
 
-# Or using the project setup
-pip install -e .
+# Or install just the runtime dependencies
+uv pip install httpx
+
+# Or using traditional pip
+pip install httpx
 ```
 
 ## Configuration
@@ -99,9 +102,27 @@ python cert_utility.py
 python complete_example.py
 ```
 
+### Using uv (Recommended)
+
+With uv, you can run scripts directly in the managed environment:
+
+```bash
+# Quick start - see all available commands
+uv run python dev_helper.py
+
+# Run any script with uv
+uv run python main.py
+uv run python api_test.py
+uv run python iot_client.py
+
+# Or enter the uv shell
+uv shell
+# Then run normally: python main.py
+```
+
 **⚠️ Before Running**: Make sure to configure your credentials first:
 ```bash
-python config_credentials.py
+uv run python config_credentials.py
 ```
 
 Or set environment variables:

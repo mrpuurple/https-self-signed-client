@@ -5,9 +5,26 @@ Test the specific API endpoint /api/v1/status on your local site.
 import json
 import os
 import warnings
+from pathlib import Path
 from typing import Any, Dict
 
 import httpx
+
+
+def load_env_file():
+    """Load environment variables from .env file if it exists."""
+    env_file = Path('.env')
+    if env_file.exists():
+        with open(env_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#') and '=' in line:
+                    key, value = line.split('=', 1)
+                    os.environ[key.strip()] = value.strip()
+
+
+# Load .env file at module level
+load_env_file()
 
 
 def test_api_endpoint() -> Dict[str, Any]:

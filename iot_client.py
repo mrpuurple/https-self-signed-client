@@ -12,6 +12,21 @@ from typing import Any, Dict, Optional
 import httpx
 
 
+def load_env_file(env_file=".env"):
+    """Load environment variables from .env file"""
+    env_vars = {}
+    try:
+        with open(env_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#') and '=' in line:
+                    key, value = line.split('=', 1)
+                    env_vars[key.strip()] = value.strip()
+    except FileNotFoundError:
+        print(f"Warning: {env_file} file not found")
+    return env_vars
+
+
 class IoTDeviceClient:
     """Client for interacting with the IoT device API."""
     
@@ -29,10 +44,13 @@ class IoTDeviceClient:
             password: Authentication password
             verify_ssl: Whether to verify SSL certificates
         """
+        # Load credentials from .env file
+        env_vars = load_env_file()
+        
         self.device_ip = device_ip
         self.base_url = f"https://{device_ip}"
-        self.username = username or os.getenv("DEVICE_USERNAME", "your_username")
-        self.password = password or os.getenv("DEVICE_PASSWORD", "your_password")
+        self.username = username or env_vars.get("DEVICE_USERNAME") or os.getenv("DEVICE_USERNAME", "your_username")
+        self.password = password or env_vars.get("DEVICE_PASSWORD") or os.getenv("DEVICE_PASSWORD", "your_password")
         self.verify_ssl = verify_ssl
         
         if not verify_ssl:

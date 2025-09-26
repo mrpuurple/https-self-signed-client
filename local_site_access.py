@@ -4,9 +4,26 @@ Direct connection to your local site with known credentials.
 """
 import os
 import warnings
+from pathlib import Path
 from typing import Any, Dict
 
 import httpx
+
+
+def load_env_file():
+    """Load environment variables from .env file if it exists."""
+    env_file = Path('.env')
+    if env_file.exists():
+        with open(env_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#') and '=' in line:
+                    key, value = line.split('=', 1)
+                    os.environ[key.strip()] = value.strip()
+
+
+# Load .env file at module level
+load_env_file()
 
 
 def connect_to_local_site() -> Dict[str, Any]:
@@ -214,7 +231,8 @@ def main():
         
     else:
         print("❌ Connection Failed!")
-        print(f"🚫 Error: {result['error']}")
+        error_msg = result.get('error', 'Unknown error occurred')
+        print(f"🚫 Error: {error_msg}")
         
         if 'response_content' in result and result['response_content']:
             print(f"\n📄 Server Response:")
