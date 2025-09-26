@@ -38,7 +38,7 @@ Before using the HTTPS client, configure your device credentials:
 
 ```bash
 # Option 1: Use the configuration helper
-python config_credentials.py
+uv run python config_credentials.py
 
 # Option 2: Create .env file manually
 cp .env.example .env
@@ -58,17 +58,17 @@ DEVICE_IP=192.168.0.113
 
 ### Basic Usage
 ```bash
-python main.py
+uv run python main.py
 ```
 
 ### Comprehensive Examples
 ```bash
-python examples.py
+uv run python examples.py
 ```
 
 ### Advanced Client
 ```bash
-python advanced_client.py
+uv run python advanced_client.py
 ```
 
 ### Local Self-Signed Certificate Testing
@@ -78,28 +78,28 @@ For testing with your local device that has a self-signed certificate:
 #### Quick API Test
 ```bash
 # Test the specific API endpoint
-python api_test.py
+uv run python api_test.py
 ```
 
 #### Interactive IoT Device Client
 ```bash
 # Full-featured IoT device interaction
-python iot_client.py
+uv run python iot_client.py
 ```
 
 #### Direct Connection Test
 ```bash
 # Simple connection test with hardcoded flow
-python local_site_access.py
+uv run python local_site_access.py
 ```
 
 #### Certificate Management
 ```bash
 # Download and optionally trust the certificate
-python cert_utility.py
+uv run python cert_utility.py
 
 # Complete SSL demonstration (both methods)
-python complete_example.py
+uv run python complete_example.py
 ```
 
 ### Using uv (Recommended)
@@ -117,7 +117,7 @@ uv run python iot_client.py
 
 # Or enter the uv shell
 uv shell
-# Then run normally: python main.py
+# Then run normally: python main.py (no uv run needed in shell)
 ```
 
 **⚠️ Before Running**: Make sure to configure your credentials first:
