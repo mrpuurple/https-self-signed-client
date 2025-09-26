@@ -68,6 +68,49 @@ python examples.py
 python advanced_client.py
 ```
 
+### Local Self-Signed Certificate Testing
+
+For testing with your local device that has a self-signed certificate:
+
+#### Quick API Test
+```bash
+# Test the specific API endpoint
+python api_test.py
+```
+
+#### Interactive IoT Device Client
+```bash
+# Full-featured IoT device interaction
+python iot_client.py
+```
+
+#### Direct Connection Test
+```bash
+# Simple connection test with hardcoded flow
+python local_site_access.py
+```
+
+#### Certificate Management
+```bash
+# Download and optionally trust the certificate
+python cert_utility.py
+
+# Complete SSL demonstration (both methods)
+python complete_example.py
+```
+
+**⚠️ Before Running**: Make sure to configure your credentials first:
+```bash
+python config_credentials.py
+```
+
+Or set environment variables:
+```bash
+export DEVICE_USERNAME="your_username"
+export DEVICE_PASSWORD="your_password"
+export DEVICE_IP="192.168.0.113"  # optional, defaults to this IP
+```
+
 ## Examples
 
 ### Simple HTTPS Request
