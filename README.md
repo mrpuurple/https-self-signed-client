@@ -19,14 +19,18 @@ A comprehensive Python toolkit for making HTTPS requests to servers with self-si
 
 ## Installation
 
+Using uv (recommended):
 ```bash
-# Using uv (recommended)
 uv sync
+```
 
-# Or install just the runtime dependencies
+Or install just the runtime dependencies:
+```bash
 uv pip install httpx
+```
 
-# Or using traditional pip
+Or using traditional pip:
+```bash
 pip install httpx
 ```
 
@@ -36,14 +40,16 @@ pip install httpx
 
 Before using the HTTPS client, configure your device credentials:
 
+Option 1: Use the configuration helper
 ```bash
-# Option 1: Use the configuration helper
 uv run python config_credentials.py
-
-# Option 2: Create .env file manually
-cp .env.example .env
-# Edit .env with your actual credentials
 ```
+
+Option 2: Create .env file manually
+```bash
+cp .env.example .env
+```
+Then edit .env with your actual credentials
 
 The `.env` file should contain:
 ```bash
@@ -76,29 +82,31 @@ uv run python advanced_client.py
 For testing with your local device that has a self-signed certificate:
 
 #### Quick API Test
+Test the specific API endpoint:
 ```bash
-# Test the specific API endpoint
 uv run python api_test.py
 ```
 
 #### Interactive IoT Device Client
+Full-featured IoT device interaction:
 ```bash
-# Full-featured IoT device interaction
 uv run python iot_client.py
 ```
 
 #### Direct Connection Test
+Simple connection test with hardcoded flow:
 ```bash
-# Simple connection test with hardcoded flow
 uv run python local_site_access.py
 ```
 
 #### Certificate Management
+Download and optionally trust the certificate:
 ```bash
-# Download and optionally trust the certificate
 uv run python cert_utility.py
+```
 
-# Complete SSL demonstration (both methods)
+Complete SSL demonstration (both methods):
+```bash
 uv run python complete_example.py
 ```
 
@@ -106,19 +114,23 @@ uv run python complete_example.py
 
 With uv, you can run scripts directly in the managed environment:
 
+Quick start - see all available commands:
 ```bash
-# Quick start - see all available commands
 uv run python dev_helper.py
+```
 
-# Run any script with uv
+Run any script with uv:
+```bash
 uv run python main.py
 uv run python api_test.py
 uv run python iot_client.py
-
-# Or enter the uv shell
-uv shell
-# Then run normally: python main.py (no uv run needed in shell)
 ```
+
+Or enter the uv shell:
+```bash
+uv shell
+```
+Then run normally: `python main.py` (no uv run needed in shell)
 
 **⚠️ Before Running**: Make sure to configure your credentials first:
 ```bash
@@ -129,8 +141,9 @@ Or set environment variables:
 ```bash
 export DEVICE_USERNAME="your_username"
 export DEVICE_PASSWORD="your_password"
-export DEVICE_IP="192.168.0.113"  # optional, defaults to this IP
+export DEVICE_IP="192.168.0.113"
 ```
+(optional, defaults to this IP)
 
 ## Examples
 
